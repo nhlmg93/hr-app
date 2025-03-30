@@ -10,6 +10,7 @@ const pool = new Pool({
   password: env.POSTGRES_PASSWORD,
   database: env.POSTGRES_DB,
   max: env.DB_POOL,
+  ssl: false,
 });
 
 export const db = drizzle(pool);

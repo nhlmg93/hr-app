@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 import {
   object,
   safeParse,
@@ -5,24 +7,25 @@ import {
   optional,
   union,
   literal,
-  type InferInput,
-  number,
+  transform,
+  pipe,
+  type InferOutput,
 } from "valibot";
 
-  // host: "localhost",
-  // port: 5432,
-  // user: "postgres",
-  // password: "12345678",
-  // database: "postgres",
-  // max: 5,
 // Define your environment schema
 const EnvSchema = object({
   DB_HOST: optional(string(), "localhost"),
-  DB_PORT: optional(number(), 5432),
+  DB_PORT: pipe(
+    optional(string(), "5432"),
+    transform((input) => Number(input))
+  ),
   POSTGRES_USER: optional(string(), "postgres"),
   POSTGRES_PASSWORD: optional(string(), "12345678"),
   POSTGRES_DB: optional(string(), "postgres"),
-  DB_POOL: optional(number(), 5),
+  DB_POOL: pipe(
+    optional(string(), "5"),
+    transform((input) => Number(input))
+  ),
   NODE_ENV: union([
     literal("development"),
     literal("production"),
@@ -31,10 +34,10 @@ const EnvSchema = object({
 });
 
 // Create a type from the schema
-export type Env = InferInput<typeof EnvSchema>;
+export type Env = InferOutput<typeof EnvSchema>;
 
 export function getEnv(): Env {
-  const result = safeParse(EnvSchema, import.meta.env);
+  const result = safeParse(EnvSchema, process.env);
 
   if (!result.success) {
     console.error("Environment validation failed:", result.issues);
