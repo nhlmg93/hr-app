@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1743362688372,
+      "tag": "0000_fair_madame_masque",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1743368413925,
+      "tag": "0001_worried_shadow_king",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1743369094378,
+      "tag": "0002_spooky_tony_stark",
+      "breakpoints": true
+    }
+  ]
+}

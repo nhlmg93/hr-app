@@ -1,0 +1,1 @@
+ALTER TABLE "users" ADD CONSTRAINT "age_check1" CHECK ("users"."age" < 150);

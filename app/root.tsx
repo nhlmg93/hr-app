@@ -9,9 +9,9 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import ContactsSidebar from "./components/contacts-sidebar";
 
-export const links: Route.LinksFunction = () => [
-];
+export const links: Route.LinksFunction = () => [];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -32,7 +32,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <main className="flex flex-row p-6">
+      <ContactsSidebar>
+        <Outlet />
+      </ContactsSidebar>
+    </main>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

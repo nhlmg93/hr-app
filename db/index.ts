@@ -1,7 +1,9 @@
 // Make sure to install the 'pg' package
 import { env } from "config/env";
 import { drizzle } from "drizzle-orm/node-postgres";
-import { Pool } from "pg";
+import pg from "pg";
+
+const { Pool } = pg;
 
 const pool = new Pool({
   host: env.DB_HOST,
@@ -14,3 +16,4 @@ const pool = new Pool({
 });
 
 export const db = drizzle(pool);
+
