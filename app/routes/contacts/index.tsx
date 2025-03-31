@@ -25,8 +25,7 @@ export function meta({ }: Route.MetaArgs) {
 }
 
 export async function loader() {
-  const users = await db.select().from(usersTable);
-  return users;
+  return await db.select().from(usersTable);
 }
 
 export async function action({ request }: Route.ActionArgs) {
@@ -116,3 +115,14 @@ function handleDelete(submit: SubmitFunction, id: number) {
     action: "/contacts",
   });
 }
+
+// HTTP Verb 	Path 	 	            Used to
+// GET 	      /photos 	 	        display a list of all photos -
+// POST 	    /photos 	          create a new photo           -
+// GET 	      /photos/new	        return an HTML form for creating a new photo
+// GET 	      /photos/:id/edit    return an HTML form for editing a photo
+// GET 	      /photos/:id	        display a specific photo
+// PATCH/PUT 	/photos/:id 	      update a specific photo
+// DELETE 	  /photos/:id 	      delete a specific photo
+
+
