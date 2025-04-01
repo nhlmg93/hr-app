@@ -52,7 +52,7 @@ export default function ContactsSidebar({ children }: ContactsSidebarProps) {
             method="POST"
             className="px-2 pb-2"
           >
-            <Button type="submit" className="w-full">
+            <Button variant={"secondary"} type="submit" className="w-full">
               <Plus className="mr-2 h-4 w-4" />
               New
             </Button>
